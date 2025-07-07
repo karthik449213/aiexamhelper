@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamSage App - Convert Notes to Exam Answers | AI Study Tool</title>
+    <meta name="description" content="Use ExamSage AI to convert your class notes into exam-ready answers. Select subject, choose answer length, and get instant results.">
+    <meta name="keywords" content="AI exam generator, notes converter, study app, exam preparation tool">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'sage-primary': '#6366f1',
+                        'sage-secondary': '#8b5cf6',
+                        'sage-accent': '#06b6d4',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-brain text-sage-primary text-2xl"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-sage-primary to-sage-secondary bg-clip-text text-transparent">ExamSage</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="app.html" class="nav-link active">App</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <button id="theme-toggle" class="theme-toggle">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="theme-toggle">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="mobile-menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="app.html" class="mobile-nav-link">App</a>
+                <a href="about.html" class="mobile-nav-link">About</a>
+                <a href="contact.html" class="mobile-nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- App Header -->
+    <section class="pt-24 pb-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-sage-primary/10 to-sage-secondary/10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-4">
+                <i class="fas fa-magic mr-3 text-sage-primary"></i>
+                AI Notes Converter
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+                Transform your notes into exam-ready answers instantly
+            </p>
+        </div>
+    </section>
+
+    <!-- Main App -->
+    <main class="py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Input Section -->
+                <div class="space-y-6">
+                    <div class="app-card">
+                        <h2 class="text-2xl font-bold mb-6 flex items-center">
+                            <i class="fas fa-edit mr-3 text-sage-primary"></i>
+                            Input Your Notes
+                        </h2>
+                        
+                        <!-- Notes Textarea -->
+                        <div class="mb-6">
+                            <label for="notes-input" class="block text-sm font-medium mb-2">
+                                Paste your class notes here
+                            </label>
+                            <textarea 
+                                id="notes-input" 
+                                rows="12" 
+                                class="app-textarea"
+                                placeholder="Paste your lecture notes, textbook content, or study materials here. The AI will analyze and convert them into exam-ready answers..."
+                            ></textarea>
+                            <div class="text-xs text-gray-500 mt-2">
+                                <span id="char-count">0</span> characters
+                            </div>
+                        </div>
+                        
+                        <!-- Subject Selection -->
+                        <div class="mb-6">
+                            <label for="subject-select" class="block text-sm font-medium mb-2">
+                                <i class="fas fa-book mr-2"></i>
+                                Subject
+                            </label>
+                            <select id="subject-select" class="app-select">
+                                <option value="">Select a subject</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="physics">Physics</option>
+                                <option value="chemistry">Chemistry</option>
+                                <option value="biology">Biology</option>
+                                <option value="history">History</option>
+                                <option value="english">English Literature</option>
+                                <option value="psychology">Psychology</option>
+                                <option value="economics">Economics</option>
+                                <option value="computer-science">Computer Science</option>
+                                <option value="business">Business Studies</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Answer Length Slider -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2">
+                                <i class="fas fa-ruler mr-2"></i>
+                                Answer Length
+                            </label>
+                            <div class="answer-length-slider">
+                                <input type="range" id="length-slider" min="1" max="3" value="2" class="slider">
+                                <div class="slider-labels">
+                                    <span class="slider-label active" data-value="1">Short</span>
+                                    <span class="slider-label active" data-value="2">Medium</span>
+                                    <span class="slider-label" data-value="3">Long</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Generate Button -->
+                        <button id="generate-btn" class="neon-button w-full text-lg py-4 mb-4">
+                            <i class="fas fa-robot mr-2"></i>
+                            <span id="btn-text">Generate Answers</span>
+                            <i id="btn-spinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                        </button>
+                        
+                        <!-- Quick Actions -->
+                        <div class="flex gap-2">
+                            <button id="clear-btn" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                <i class="fas fa-trash mr-2"></i>
+                                Clear
+                            </button>
+                            <button id="save-btn" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                <i class="fas fa-save mr-2"></i>
+                                Save
+                            </button>
+                            <button id="load-btn" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                <i class="fas fa-folder-open mr-2"></i>
+                                Load
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Ad Section -->
+                    <div class="ad-placeholder-small">
+                        <i class="fas fa-ad text-2xl text-gray-400 mb-2"></i>
+                        <p class="text-gray-500 text-sm">Ad Here</p>
+                        <p class="text-xs text-gray-400">300x250 Advertisement</p>
+                    </div>
+                </div>
+                
+                <!-- Output Section -->
+                <div class="space-y-6">
+                    <div class="app-card">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold flex items-center">
+                                <i class="fas fa-lightbulb mr-3 text-sage-secondary"></i>
+                                Generated Answers
+                            </h2>
+                            <button id="copy-all-btn" class="copy-btn hidden">
+                                <i class="fas fa-copy mr-2"></i>
+                                Copy All
+                            </button>
+                        </div>
+                        
+                        <!-- Output Content -->
+                        <div id="output-content" class="output-content">
+                            <div class="empty-state">
+                                <i class="fas fa-magic text-4xl text-gray-400 mb-4"></i>
+                                <p class="text-gray-500 text-lg">Your AI-generated answers will appear here</p>
+                                <p class="text-gray-400 text-sm mt-2">Enter your notes above and click "Generate Answers" to get started</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Loading State -->
+                        <div id="loading-state" class="loading-state hidden">
+                            <div class="ai-processing">
+                                <div class="ai-brain">
+                                    <i class="fas fa-brain text-4xl text-sage-primary animate-pulse"></i>
+                                </div>
+                                <div class="processing-text">
+                                    <p class="text-lg font-semibold">AI is processing your notes...</p>
+                                    <p class="text-sm text-gray-500 mt-2" id="processing-step">Analyzing content structure</p>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="progress-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-12 px-4 sm:px-6 lg:px-8 mt-12">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo & Description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-brain text-sage-primary text-2xl"></i>
+                        <span class="text-2xl font-bold">ExamSage</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        The AI-powered study companion that transforms your notes into exam success.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 ExamSage. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

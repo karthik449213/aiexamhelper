@@ -1,0 +1,50 @@
+# Robots.txt for ExamSage AI Study Tool
+# https://examsage.ai
+
+# Allow all web crawlers
+User-agent: *
+Allow: /
+
+# Optimize crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://examsage.ai/sitemap.xml
+
+# Disallow admin or private areas (none for MVP)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow important pages for SEO
+Allow: /index.html
+Allow: /app.html
+Allow: /about.html
+Allow: /contact.html
+
+# Allow CSS, JS, and assets
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# Specific bot instructions for better SEO
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block any potential scrapers or unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Note: This is an MVP version
+# Additional rules may be added as the platform grows
