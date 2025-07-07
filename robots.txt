@@ -1,5 +1,5 @@
 # Robots.txt for ExamSage AI Study Tool
-# https://examsage.ai
+# https://aiexamhelper.netlify.app/
 
 # Allow all web crawlers
 User-agent: *
@@ -9,7 +9,7 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://examsage.ai/sitemap.xml
+Sitemap: https://aiexamhelper.netlify.app/sitemap.xml
 
 # Disallow admin or private areas (none for MVP)
 # Disallow: /admin/
