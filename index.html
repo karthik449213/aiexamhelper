@@ -79,15 +79,20 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="mobile-nav-link">Home</a>
-                <a href="app.html" class="mobile-nav-link">App</a>
-                <a href="about.html" class="mobile-nav-link">About</a>
-                <a href="contact.html" class="mobile-nav-link">Contact</a>
-            </div>
+        <!-- Mobile Navigation Menu Bar -->
+        <div id="mobile-menu" class="mobile-menu fixed top-16 left-0 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 z-40 hidden md:hidden transition-all duration-300">
+            <ul class="flex flex-col items-center py-4 space-y-2">
+                <li class="w-full"><a href="index.html" class="mobile-nav-link block w-full text-center py-2">Home</a></li>
+                <li class="w-full"><a href="app.html" class="mobile-nav-link block w-full text-center py-2">App</a></li>
+                <li class="w-full"><a href="about.html" class="mobile-nav-link block w-full text-center py-2">About</a></li>
+                <li class="w-full"><a href="contact.html" class="mobile-nav-link block w-full text-center py-2">Contact</a></li>
+                <li class="w-full md:hidden flex justify-center mt-4">
+                    <button id="theme-toggle-mobile-menu" class="theme-toggle">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </li>
+            </ul>
         </div>
     </nav>
 

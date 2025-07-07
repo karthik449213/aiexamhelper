@@ -25,24 +25,33 @@ function initMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     
     if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
             this.classList.toggle('active');
-            mobileMenu.classList.toggle('show');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('show');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('show');
+            }
         });
-        
+
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
                 mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('show');
             }
         });
-        
-        // Close mobile menu when clicking on a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        // Close mobile menu when clicking on a link or theme toggle
+        const mobileLinks = mobileMenu.querySelectorAll('a, .theme-toggle');
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
                 mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('show');
             });
         });

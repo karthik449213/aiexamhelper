@@ -36,10 +36,10 @@ body {
     @apply text-sage-primary;
 }
 
-.mobile-menu {
-    @apply hidden md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700;
-}
 
+.mobile-menu {
+    @apply hidden md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 w-full fixed top-16 left-0 z-40 transition-all duration-300;
+}
 .mobile-menu.show {
     @apply block;
 }
