@@ -6,7 +6,7 @@
   
   <!-- Home Page -->
   <url>
-    <loc>https://examsage.ai/</loc>
+    <loc>https://aiexamhelper.netlify.app/</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
   
   <!-- App Page -->
   <url>
-    <loc>https://examsage.ai/app.html</loc>
+    <loc>https://aiexamhelper.netlify.app/app.html</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -22,7 +22,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://examsage.ai/about.html</loc>
+    <loc>https://aiexamhelper.netlify.app/about.html</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -30,7 +30,7 @@
   
   <!-- Contact Page -->
   <url>
-    <loc>https://examsage.ai/contact.html</loc>
+    <loc>https://aiexamhelper.netlify.app/contact.html</loc>
     <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
