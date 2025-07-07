@@ -1,0 +1,56 @@
+Create a full professional, mobile-friendly MVP website for an AI SaaS named **"ExamSage"** that helps students convert long class notes into short, exam-ready answers.
+
+💡 UI/UX Requirements:
+- Clean, modern look like Notion or Grammarly
+- Responsive, mobile-first layout
+- Advanced CSS: animations, hover effects, toggles, neon glow on buttons
+- Light/dark toggle
+- Footer for privacy policy / contact
+
+📄 Pages:
+1. **Home Page** with headline: "Turn Notes into Exam Answers in Seconds"
+   - Subheadline: "Paste your notes, get direct answers. Save time, score high."
+   - CTA: "Try Now" → Scrolls to input form
+   - Section for benefits (icons + text): Save Time, Better Scores, Zero Stress
+   - Placeholder Ad section (divs with text "Ad Here")
+
+2. **App Page** (on same site):
+   - Textarea to paste notes
+   - Dropdown to select subject
+   - Slider to select answer length: Short | Medium | Long
+   - Button: "Generate Answers"
+   - Output section (mock data shown with AI-like animation)
+   - Optional: Button to "Copy All Answers"
+   - Placeholder for ad (div with text)
+
+3. **About Page**
+   - Brief about the tool, how it's free, how ads support it
+
+4. **Contact Form (Mock)**
+
+🧠 AI/Backend (MVP Version):
+- No real OpenAI or API integration.
+- When user clicks “Generate”, show mocked AI answers using JavaScript.
+- Use `setTimeout` to mimic processing delay.
+- All logic should be frontend-only, easily deployable on Netlify or Replit.
+- Include comment placeholders to integrate API later.
+
+📦 Tech Stack:
+- HTML, CSS, JavaScript
+- Optional: Tailwind CSS or Bootstrap
+- No backend required (MVP)
+- Use localStorage to save previous inputs (bonus)
+
+📈 Other:
+- SEO Meta Tags for “AI Exam Generator”, “Notes to Exam Answers”, “AI Tool for Students”
+- Sitemap.xml & robots.txt placeholder
+- Favicon with a book/AI icon
+
+💰 Monetization Ready:
+- Placeholder `<div>`s where AdSense can be placed
+- Text: "Support this tool by checking our sponsors"
+
+Deploy-ready: Should work without any backend; static site.
+
+Name the project folder: `exam-sage-mvp`
+
